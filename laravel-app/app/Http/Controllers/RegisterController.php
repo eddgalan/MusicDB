@@ -9,7 +9,7 @@ use App\Http\Requests\RegisterRequest;
 class RegisterController extends Controller
 {
     public function show() {
-      return view('register');
+      return view('register', ['title' => 'Create User']);
     }
 
     public function register(RegisterRequest $request) {
