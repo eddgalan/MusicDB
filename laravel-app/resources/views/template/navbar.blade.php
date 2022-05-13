@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- auth -->
+            @auth
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#"> Artistas </a>
@@ -14,21 +14,21 @@
                     <a class="nav-link" href="#"> Álbumes </a>
                 </li>
             </ul>
-            <!-- endauth -->
+            @endauth
             <div class="d-flex">
-                <!-- auth -->
+                @auth
                 <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!--  auth()->user()->username -->
+                            {{ auth()->user()->username }}
                             <i class="fas fa-user"></i>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href=""> <i class="fas fa-sign-out-alt color_red"></i> Logout </a></li>
+                        <ul class="dropdown-menu user-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{{ route('logout') }}"> <i class="fas fa-sign-out-alt color_red"></i> Logout </a></li>
                         </ul>
                     </li>
                 </ul>
-                <!-- endauth -->
+                @endauth
             </div>
         </div>
     </div>
