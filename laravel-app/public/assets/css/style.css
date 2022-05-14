@@ -1,3 +1,9 @@
+body {
+    background-color: #E7E7E7;
+}
+label {
+    margin-bottom: 0px !important;
+}
 .user-menu {
     margin-left: -50px;
 }
