@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Artist;
 
 class ArtistsController extends Controller
 {
@@ -28,7 +29,7 @@ class ArtistsController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -39,7 +40,22 @@ class ArtistsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'img'=> 'required',
+        ]);
+        $artist = new Artist;
+        $artist->name = $request->name;
+        $artist->lastname = $request->lastname;
+        $artist->alias = $request->alias;
+        $artist->description = $request->description;
+        $artist->website = $request->web_site;
+        $artist->pathimg = '';
+        $artist->save();
+        $pathimg = $request->file('img')->store('public/artists/'. strval($artist->id));
+        $artist->pathimg = $pathimg;
+        $artist->save();
+        return redirect()->route('artists')->with('success', 'Se agregó el nuevo artista correctamente.');
     }
 
     /**
