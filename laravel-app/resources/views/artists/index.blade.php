@@ -28,10 +28,11 @@
                     <table class="table table-hover w-100 pt-3 jquery-data-table">
                         <thead class="table-dark">
                             <tr>
-                                <th> Id </th>
-                                <th> Nombre </th>
-                                <th> Apellido </th>
-                                <th> Alias </th>
+                                <th class="text-center"> Id </th>
+                                <th class="text-center"> Nombre </th>
+                                <th class="text-center"> Apellido </th>
+                                <th class="text-center"> Alias </th>
+                                <th class="text-center"> Opciones </th>
                             </tr>
                         </thead>
                       </table>
@@ -45,20 +46,34 @@
         $(document).ready(function() {
             $('.jquery-data-table').dataTable( {
                 ajax: "{{ route('api_get_artists') }}",
+                columns: [
+                    {
+                        data: 'id'
+                    },
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'lastname'
+                    },
+                    {
+                        data: 'alias'
+                    },
+                    {
+                        data: 'id',
+                        render: function(data, type) {
+                            return `
+                                <div class="text-center">
+                                    <div class="btn-group btn-group-sm text-center">
+                                        <button type="button" class="btn btn-primary" onclick="showinfo(`+ data +`)"> <i class="fas fa-edit"></i> </button>
+                                        <button type="button" class="btn btn-danger" onclick="delete(`+ data +`)"> <i class="fas fa-trash"></i> </button>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    },
+                ]
             });
-            // $.ajax({
-            //     url: "{{ route('api_get_artists') }}",
-            //     success: function(response) {
-            //         let data = response.data;
-            //         console.log(data);
-            //         $('.jquery-data-table').dataTable( {
-            //             data: data,
-            //             columns: [
-            //
-            //             ]
-            //         });
-            //     }
-            // });
         });
     </script>
 </body>

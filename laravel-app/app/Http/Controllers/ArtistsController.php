@@ -106,26 +106,11 @@ class ArtistsController extends Controller
     public function getArtists(){
         if( Auth::check() ) {
             $artists = Artist::all();
-
-            $array_artists=[];
-            foreach ($artists as $artist) {
-                $data = [
-                    $artist['id'],
-                    $artist['name'],
-                    $artist['lastname'],
-                    $artist['alias'],
-                ];
-                array_push($array_artists, $data);
-            }
             return response()->json([
-                'data'=> $array_artists
+                'code'=> 200,
+                'msg'=> 'Ok',
+                'data'=> $artists->toArray(),
             ]);
-
-            // return response()->json([
-            //     'code'=> 200,
-            //     'msg'=> 'Ok',
-            //     'data'=> $artists->toArray(),
-            // ]);
         } else {
             return response()->json([
                 'code'=> 400,
