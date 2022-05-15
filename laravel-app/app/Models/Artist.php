@@ -10,8 +10,8 @@ class Artist extends Model
     use HasFactory;
 
     protected $table = "artists";
-    protected $fillable = ['name', 'lastname', 'alias', 'description', 'pathimg', 'website'];
-    protected $hidden = ['id'];
+    protected $fillable = ['id', 'name', 'lastname', 'alias', 'description', 'pathimg', 'website'];
+    // protected $hidden = ['id'];
 
     public function getAll(){
         return Artist::all();
@@ -20,5 +20,5 @@ class Artist extends Model
     public function getById($id) {
         return Artist::find($id);
     }
-    
+
 }

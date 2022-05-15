@@ -24,3 +24,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [HomeController::class, 'show'])->name('home');
 Route::get('/artists', [ArtistsController::class, 'index'])->name('artists');
 Route::post('/artists', [ArtistsController::class, 'store'])->name('artists');
+Route::get('/api/artists', [ArtistsController::class, 'getArtists'])->name('api_get_artists');
+// Route::get('/artists/{id}', [ArtistsController::class, 'show']->name('artists_show'));

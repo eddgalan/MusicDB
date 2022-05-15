@@ -4,3 +4,4 @@
 <link rel="stylesheet" href="{{ url('assets/bootstrap/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
