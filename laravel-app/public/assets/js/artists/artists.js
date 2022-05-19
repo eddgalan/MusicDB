@@ -52,6 +52,7 @@ function getArtistData(id) {
         url: '../../../api/artists/'+ id,
         success: function(resp) {
             let artist = resp.data;
+            $("input[name='id'").val(artist.id);
             $("input[name='name'").val(artist.name);
             $("input[name='lastname'").val(artist.lastname);
             $("input[name='alias'").val(artist.alias);

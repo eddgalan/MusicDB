@@ -109,12 +109,13 @@ class ArtistsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
+            'id'=> 'required',
             'name'=> 'required',
         ]);
-        $artist = Artist::find($id);
+        $artist = Artist::find($request->id);
         $artist->name = $request->name;
         $artist->lastname = $request->lastname;
         $artist->alias = $request->alias;
@@ -126,7 +127,7 @@ class ArtistsController extends Controller
             $artist->pathimg = $request->file('img')->store('public/artists/'. strval($artist->id));
             $artist->save();
         }
-        return redirect()->route('artists')->with('success', 'Se agregó el nuevo artista correctamente.');
+        return redirect()->route('artists')->with('success', 'Se actualizaron los datos correctamente.');
     }
 
     /**

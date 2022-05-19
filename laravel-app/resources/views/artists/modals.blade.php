@@ -5,7 +5,7 @@
                 <h4 class="modal-title"> Agregar Artista </h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form method="POST" action="{{ route('artists') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('artists_store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -61,6 +61,8 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row">
+                        <!-- Artists Id -->
+                        <input type="hidden" name="id">
                         <!-- Imagen -->
                         <div class="col-md-12">
                             <img class="img-fluid w-100" src="" name="artist_img">
