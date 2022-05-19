@@ -107,3 +107,30 @@
         </div>
     </div>
 </div>
+<!-- Delete Artist -->
+<div class="modal" id="deleteArtist">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Eliminar Artista </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ route('artists_delete') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Artists Id -->
+                        <input type="hidden" name="id">
+                        <div class="col-md-12">
+                            <p name='msg-delete'> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"> <i class="fas fa-trash"></i> Eliminar </button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"> <i class="fas fa-times"></i> Cancelar </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

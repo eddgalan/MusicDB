@@ -24,7 +24,7 @@ $(document).ready(function() {
                                 data-bs-toggle="modal" data-bs-target="#editArtist">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger" onclick="delete(`+ data +`)"
+                                <button type="button" class="btn btn-danger" onclick="showMsgDelete(`+ data +`)"
                                 data-bs-toggle="modal" data-bs-target="#deleteArtist">
                                     <i class="fas fa-trash"></i>
                                 </button>
@@ -59,6 +59,21 @@ function getArtistData(id) {
             $("textarea[name='description'").val(artist.description);
             $("input[name='web_site'").val(artist.web_site);
             $("img[name='artist_img']").attr('src', artist.pathimg.replace('public', 'storage'));
+        }
+    });
+}
+
+function showMsgDelete(id){
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '../../../api/artists/'+ id,
+        success: function(resp) {
+            let artist = resp.data;
+            let msg_del = "¿Seguro que desea eliminar el Artista <strong>"+ artist.name +"</strong>?. "+
+                "Todos los álbumes y canciones del artista también se eliminaran.";
+            $("input[name='id'").val(artist.id);
+            $("p[name='msg-delete'").html(msg_del);
         }
     });
 }

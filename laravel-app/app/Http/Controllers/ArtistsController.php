@@ -136,9 +136,14 @@ class ArtistsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $request->validate([
+            'id'=> 'required'
+        ]);
+        $artist = Artist::find($request->id);
+        $artist->delete();
+        return redirect()->route('artists')->with('success', 'Se eliminó el artista seleccionado correctamente.');
     }
 
     public function getArtists(){
