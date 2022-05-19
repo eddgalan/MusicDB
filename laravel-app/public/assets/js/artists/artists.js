@@ -46,18 +46,18 @@ function clearFields(){
 }
 
 function getArtistData(id) {
-    // $.ajax({
-    //     type: 'GET',
-    //     dataType: 'json',
-    //     url: '../../../api/artists/'+ id,
-    //     success: function(resp) {
-    //         let artist = resp.data;
-    //         $("input[name='name'").val(artist.name);
-    //         $("input[name='lastname'").val(artist.lastname);
-    //         $("input[name='alias'").val(artist.alias);
-    //         $("textarea[name='description'").val(artist.description);
-    //         $("input[name='web_site'").val(artist.web_site);
-    //         $("img[name='artist_img']").attr('src', artist.pathimg.replace('public', 'storage'));
-    //     }
-    // });
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '../../../api/artists/'+ id,
+        success: function(resp) {
+            let artist = resp.data;
+            $("input[name='name'").val(artist.name);
+            $("input[name='lastname'").val(artist.lastname);
+            $("input[name='alias'").val(artist.alias);
+            $("textarea[name='description'").val(artist.description);
+            $("input[name='web_site'").val(artist.web_site);
+            $("img[name='artist_img']").attr('src', artist.pathimg.replace('public', 'storage'));
+        }
+    });
 }
