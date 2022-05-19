@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Artist;
 
 class ArtistsController extends Controller
@@ -66,7 +67,28 @@ class ArtistsController extends Controller
      */
     public function show($id)
     {
-        //
+        if( Auth::check() ) {
+            $artist = Artist::find($id);
+            if( $artist ) {
+                return response()->json([
+                    'code'=> 200,
+                    'msg'=> 'Ok',
+                    'data'=> $artist
+                ]);
+            } else {
+                return response()->json([
+                    'code'=> 404,
+                    'msg'=> 'Resource not found',
+                    'data'=> null
+                ]);
+            }
+        } else {
+            return response()->json([
+                'code'=> 400,
+                'msg'=> 'Bad request',
+                'data'=> null
+            ]);
+        }
     }
 
     /**
@@ -89,7 +111,22 @@ class ArtistsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+        ]);
+        $artist = Artist::find($id);
+        $artist->name = $request->name;
+        $artist->lastname = $request->lastname;
+        $artist->alias = $request->alias;
+        $artist->description = $request->description;
+        $artist->website = $request->web_site;
+        $artist->save();
+        if( $request->file('img') ) {
+            Storage::delete($artist->pathimg);
+            $artist->pathimg = $request->file('img')->store('public/artists/'. strval($artist->id));
+            $artist->save();
+        }
+        return redirect()->route('artists')->with('success', 'Se agregó el nuevo artista correctamente.');
     }
 
     /**
