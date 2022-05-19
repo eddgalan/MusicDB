@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 text-end">
                         <button type="button" class="btn btn-success waves-effect"
-                            data-bs-toggle="modal" data-bs-target="#newArtist">
+                            data-bs-toggle="modal" data-bs-target="#newArtist" onclick="clearFields()">
                             <i class="fas fa-plus"></i> Agregar Artista
                         </button>
                     </div>
@@ -42,39 +42,6 @@
     </div>
     @include('artists.modals')
     @include('template.scripts')
-    <script>
-        $(document).ready(function() {
-            $('.jquery-data-table').dataTable( {
-                ajax: "{{ route('api_get_artists') }}",
-                columns: [
-                    {
-                        data: 'id'
-                    },
-                    {
-                        data: 'name'
-                    },
-                    {
-                        data: 'lastname'
-                    },
-                    {
-                        data: 'alias'
-                    },
-                    {
-                        data: 'id',
-                        render: function(data, type) {
-                            return `
-                                <div class="text-center">
-                                    <div class="btn-group btn-group-sm text-center">
-                                        <button type="button" class="btn btn-primary" onclick="showinfo(`+ data +`)"> <i class="fas fa-edit"></i> </button>
-                                        <button type="button" class="btn btn-danger" onclick="delete(`+ data +`)"> <i class="fas fa-trash"></i> </button>
-                                    </div>
-                                </div>
-                            `;
-                        }
-                    },
-                ]
-            });
-        });
-    </script>
+    <script src="{{ url('assets/js/artists/artists.js') }}"></script>
 </body>
 </html>
