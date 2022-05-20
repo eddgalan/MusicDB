@@ -3,7 +3,7 @@ let count = 0;
 
 $(document).ready(function() {
     $('.jquery-data-table').dataTable( {
-        ajax: "../../../api/albums",
+        ajax: "../../../api/getalbums",
         columns: [
             {
                 data: 'id'
@@ -15,7 +15,7 @@ $(document).ready(function() {
                 data: 'title'
             },
             {
-                data: 'artist_id'
+                data: 'alias'
             },
             {
                 data: 'genre'

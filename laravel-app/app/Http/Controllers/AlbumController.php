@@ -121,7 +121,8 @@ class AlbumController extends Controller
 
     public function getAlbums(){
         if( Auth::check() ) {
-            $albums = Album::select('albums.id', 'albums.title', 'albums.artist_id', 'artists.name',
+            $albums = Album::select('albums.id', 'albums.title', 'albums.artist_id',
+                'artists.name', 'artists.lastname', 'artists.alias',
                 'albums.date','albums.genre', 'albums.description', 'albums.pathimg')
                 ->join('artists', 'albums.artist_id', '=', 'artists.id')
                 ->get();

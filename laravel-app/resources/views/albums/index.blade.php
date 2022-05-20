@@ -30,7 +30,7 @@
                                 <th class="text-center"> Id </th>
                                 <th class="text-center"> Portada </th>
                                 <th class="text-center"> Título </th>
-                                <th class="text-center"> Artista </th>
+                                <th class="text-center"> Artista (Alias) </th>
                                 <th class="text-center"> Género </th>
                                 <th class="text-center"> Lanzamiento </th>
                                 <th class="text-center"> Opciones </th>

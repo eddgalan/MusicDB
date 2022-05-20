@@ -32,4 +32,4 @@ Route::get('/api/artists/{id}', [ArtistsController::class, 'show'])->name('api_g
 Route::get('/albums', [AlbumController::class, 'index'])->name('album');
 Route::get('/albums/nuevo', [AlbumController::class, 'create'])->name('album_create');
 Route::post('/albums/store', [AlbumController::class, 'store'])->name('album_store');
-Route::get('/api/albums', [AlbumController::class, 'getAlbums'])->name('api_get_albums');
+Route::get('/api/getalbums', [AlbumController::class, 'getAlbums'])->name('api_get_albums');
