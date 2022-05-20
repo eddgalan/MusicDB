@@ -4,9 +4,26 @@ body {
 label {
     margin-bottom: 0px !important;
 }
+fieldset {
+    border: 1px solid !important;
+    padding: 5.6px 12px 10px;
+    margin: 5px 0px;
+}
+legend {
+    font-size: 1rem;
+}
+small {
+    font-size: .75em !important;
+}
 .user-menu {
     margin-left: -50px;
 }
 .color_red {
     color: #FE2020;
+}
+.color_green {
+    color: #47A376;
+}
+.display_none {
+    display: none;
 }

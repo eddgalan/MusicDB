@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistsController;
+use App\Http\Controllers\AlbumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,7 @@ Route::post('/artists/update', [ArtistsController::class, 'update'])->name('arti
 Route::post('/artists/delete', [ArtistsController::class, 'destroy'])->name('artists_delete');
 Route::get('/api/artists', [ArtistsController::class, 'getArtists'])->name('api_get_artists');
 Route::get('/api/artists/{id}', [ArtistsController::class, 'show'])->name('api_get_artist');
+Route::get('/albums', [AlbumController::class, 'index'])->name('album');
+Route::get('/albums/nuevo', [AlbumController::class, 'create'])->name('album_create');
+Route::post('/albums/store', [AlbumController::class, 'store'])->name('album_store');
+Route::get('/api/albums', [AlbumController::class, 'getAlbums'])->name('api_get_albums');
