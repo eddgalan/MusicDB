@@ -99,7 +99,8 @@
                                           </table>
                                     </div>
                                     <div class="col-md-12 text-end">
-                                        <button type="button" class="btn btn-success" name="modal-add-song" data-bs-toggle="modal" data-bs-target="#addSong">
+                                        <button type="button" class="btn btn-success" name="modal-add-song"
+                                            data-bs-toggle="modal" data-bs-target="#addSongPOST">
                                             <i class="fas fa-plus"></i> Agregar canción
                                         </button>
                                     </div>
