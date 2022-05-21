@@ -6,7 +6,8 @@ $(document).ready(function() {
         ajax: "../../../api/getalbums",
         columns: [
             {
-                data: 'id'
+                data: 'id',
+                class: 'text-center'
             },
             {
                 data: 'pathimg'
@@ -18,10 +19,12 @@ $(document).ready(function() {
                 data: 'alias'
             },
             {
-                data: 'genre'
+                data: 'genre',
+                class: 'text-center'
             },
             {
-                data: 'date'
+                data: 'date',
+                class: 'text-center'
             },
             {
                 data: 'id',
