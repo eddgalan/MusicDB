@@ -135,11 +135,12 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $album = Album::find($id);
+        $album_id = $id ? $id : $request->id;
+        $album = Album::find($album_id);
         $album->delete();
-        return redirect()->route('album', $id)->with('success', 'Se ha eliminado el álbum.');
+        return redirect()->route('album')->with('success', 'Se ha eliminado el álbum.');
     }
 
     public function getAlbums(){

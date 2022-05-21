@@ -32,8 +32,8 @@ $(document).ready(function() {
                                 <a class="btn btn-primary" href="../../../albums/`+ data +`">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button type="button" class="btn btn-danger" onclick="showMsgDelete(`+ data +`)"
-                                data-bs-toggle="modal" data-bs-target="#deleteArtist">
+                                <button type="button" class="btn btn-danger" onclick="setAlbumId(`+ data +`)"
+                                data-bs-toggle="modal" data-bs-target="#deleteAlbum">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -153,6 +153,10 @@ $(document).ready(function() {
     });
 
 });
+
+function setAlbumId(id) {
+    $("input[name='id']").val(id);
+}
 
 function deleteSong(index) {
     let new_songs = [];

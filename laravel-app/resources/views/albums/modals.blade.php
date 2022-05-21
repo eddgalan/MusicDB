@@ -6,12 +6,12 @@
                     <h4 class="modal-title"> Eliminar Álbum </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form method="POST" action="{{ route('albums_delete', isset($album) ? $album->id : '') }}">
+                <form method="POST" action="{{ route('albums_delete', isset($album) ? $album->id : '0') }}">
                     @method('DELETE')
                     @csrf
                     <div class="modal-body">
                         <div class="row">
-                            <!-- Artists Id -->
+                            <!-- Álbum Id -->
                             <input type="hidden" name="id">
                             <div class="col-md-12">
                                 <p name='msg-delete'> ¿Está seguro que desea eliminar el álbum?

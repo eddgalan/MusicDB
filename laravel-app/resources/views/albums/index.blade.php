@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    @include('artists.modals')
+    @include('albums.modals')
     @include('template.scripts')
     <script src="{{ url('assets/js/albums/albums.js') }}"></script>
 </body>
