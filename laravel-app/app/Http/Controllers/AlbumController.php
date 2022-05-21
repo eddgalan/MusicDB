@@ -63,7 +63,7 @@ class AlbumController extends Controller
             $album->description = $request->description;
             $album->pathimg = '---';
             $album->save();
-
+            $request->session()->put('success', 'Se agregó el álbum correctamente');
             return response()->json([
                 'code'=> 201,
                 'msg'=> 'Ok. Se registró de forma correcta el álbum',

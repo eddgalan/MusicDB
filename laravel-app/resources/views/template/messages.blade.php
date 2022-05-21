@@ -10,7 +10,7 @@
 @endif
 
 @if( Session::get('success', false) )
-    <?php $data = Session::get('success'); ?>
+    <?php $data = Session::pull('success'); ?>
     @if( is_array($data) )
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert">×</button>

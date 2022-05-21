@@ -142,7 +142,7 @@ $(document).ready(function() {
                     url: '../../../albums/store',
                     data: data,
                     success: function(resp) {
-                        console.log(resp);
+                        window.location.href = '../../../albums';
                     }
                 });
             } else {
