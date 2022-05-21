@@ -146,6 +146,9 @@ $(document).ready(function() {
                     data: data,
                     success: function(resp) {
                         window.location.href = '../../../albums';
+                    },
+                    error : function(xhr, status) {
+                        window.location.reload();
                     }
                 });
             } else {

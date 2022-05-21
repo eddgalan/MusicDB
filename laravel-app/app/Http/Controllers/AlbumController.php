@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Artist;
 use App\Models\Album;
+use App\Models\Song;
 
 class AlbumController extends Controller
 {
@@ -63,6 +64,10 @@ class AlbumController extends Controller
             $album->description = $request->description;
             $album->pathimg = '---';
             $album->save();
+            $songs = $request->songs;
+            foreach($songs as $song) {
+                Song::store($song, $album->id);
+            }
             $request->session()->put('success', 'Se agregó el álbum correctamente');
             return response()->json([
                 'code'=> 201,
