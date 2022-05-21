@@ -29,10 +29,9 @@ $(document).ready(function() {
                     return `
                         <div class="text-center">
                             <div class="btn-group btn-group-sm text-center">
-                                <button type="button" class="btn btn-primary" onclick="getAlbumData(`+ data +`)"
-                                data-bs-toggle="modal" data-bs-target="#editArtist">
+                                <a class="btn btn-primary" href="../../../albums/`+ data +`">
                                     <i class="fas fa-edit"></i>
-                                </button>
+                                </a>
                                 <button type="button" class="btn btn-danger" onclick="showMsgDelete(`+ data +`)"
                                 data-bs-toggle="modal" data-bs-target="#deleteArtist">
                                     <i class="fas fa-trash"></i>
@@ -137,7 +136,6 @@ $(document).ready(function() {
                     description: description,
                     songs: arraySongs
                 };
-                console.log(data);
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',

@@ -82,7 +82,12 @@ class AlbumController extends Controller
      */
     public function show($id)
     {
-        //
+        if( Auth::check() ) {
+            $album = Album::getAlbum($id);
+            return view('albums.show', ['title' => 'Álbum', 'album'=> $album]);
+        } else {
+            return redirect('/home');
+        }
     }
 
     /**
@@ -105,7 +110,23 @@ class AlbumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if( Auth::check() ) {
+            $request->validate([
+                'title'=> 'required',
+                'date'=> 'required',
+                'genre'=> 'required',
+            ]);
+            $album = Album::find($id);
+            $album->title = $request->title;
+            $album->date = $request->date;
+            $album->genre = $request->genre;
+            $album->description = $request->description;
+            $album->pathimg = '---';
+            $album->save();
+            return redirect()->route('albums_show', $id)->with('success', 'Se actualizó el álbum de forma correcta.');
+        } else {
+            return redirect('/home');
+        }
     }
 
     /**
@@ -116,16 +137,14 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $album = Album::find($id);
+        $album->delete();
+        return redirect()->route('album', $id)->with('success', 'Se ha eliminado el álbum.');
     }
 
     public function getAlbums(){
         if( Auth::check() ) {
-            $albums = Album::select('albums.id', 'albums.title', 'albums.artist_id',
-                'artists.name', 'artists.lastname', 'artists.alias',
-                'albums.date','albums.genre', 'albums.description', 'albums.pathimg')
-                ->join('artists', 'albums.artist_id', '=', 'artists.id')
-                ->get();
+            $albums = Album::getAll();
             return response()->json([
                 'code'=> 200,
                 'msg'=> 'Ok',
