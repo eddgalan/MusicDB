@@ -89,7 +89,8 @@ class AlbumController extends Controller
     {
         if( Auth::check() ) {
             $album = Album::getAlbum($id);
-            return view('albums.show', ['title' => 'Álbum', 'album'=> $album]);
+            $songs = Song::getByAlbum($album->id);
+            return view('albums.show', ['title' => 'Álbum', 'album'=> $album, 'songs'=> $songs]);
         } else {
             return redirect('/home');
         }
