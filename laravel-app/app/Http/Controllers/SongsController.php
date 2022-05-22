@@ -90,8 +90,9 @@ class SongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $song = Song::find($id);
+        $song->delete();
+        return redirect()->back()->with('success', 'Se ha eliminado la canción.');
     }
 }

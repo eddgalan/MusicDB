@@ -84,10 +84,12 @@
                                                       <td>
                                                           <div class="text-end">
                                                               <div class="btn-group btn-group-sm text-center">
-                                                                  <button type="button" class="btn btn-primary" onclick="showSong(0)" data-bs-toggle="modal" data-bs-target="#editSong">
+                                                                  <button type="button" class="btn btn-primary" onclick="showSong(0)"
+                                                                    data-bs-toggle="modal" data-bs-target="#editSong">
                                                                       <i class="fas fa-edit"></i>
                                                                   </button>
-                                                                  <button type="button" class="btn btn-danger" onclick="deleteSong(0)">
+                                                                  <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong('{{ $song->id }}', '{{ $song->title }}')"
+                                                                    data-bs-toggle="modal" data-bs-target="#showMsgDeleteSong">
                                                                       <i class="fas fa-trash"></i>
                                                                   </button>
                                                               </div>
@@ -125,7 +127,9 @@
         </div>
     </div>
     @include('albums.modals')
+    @include('songs.modals')
     @include('template.scripts')
     <script src="{{ url('assets/js/albums/albums.js') }}"></script>
+    <script src="{{ url('assets/js/songs/songs.js') }}"></script>
 </body>
 </html>

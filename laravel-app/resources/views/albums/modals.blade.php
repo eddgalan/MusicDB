@@ -141,7 +141,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <!-- Album Id -->
-                                    <input type="hidden" name="album_id" value="{{ $album->id }}">
+                                    <input type="hidden" name="album_id" value="{{ isset($album) ? $album->id : '0' }}">
                                     <!-- Nombre -->
                                     <div class="col-md-6">
                                         <label for="title_song"> Titulo: </label>
