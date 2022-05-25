@@ -27,6 +27,16 @@ class Song extends Model
         return Song::find($id);
     }
 
+    public function getAll() {
+        $songs = Song::select('songs.id', 'songs.title', 'songs.album_id', 'albums.title AS album_name',
+            'artists.alias AS artist',
+            'songs.path_video', 'songs.path_stream1', 'songs.path_stream2')
+            ->join('albums', 'albums.id', '=', 'songs.album_id')
+            ->join('artists', 'artists.id', '=', 'albums.artist_id')
+            ->get();
+        return $songs;
+    }
+
     public function getByAlbum($albumId) {
         $songs = Song::select('songs.id', 'songs.title', 'songs.album_id', 'albums.title AS album_title',
             'songs.path_video', 'songs.path_stream1', 'songs.path_stream2')

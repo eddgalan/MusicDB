@@ -14,9 +14,12 @@ class SongsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        if( Auth::check() ) {
+            return view('songs.index', ['title' => 'Álbumes']);
+        } else {
+            return redirect('/home');
+        }
     }
 
     /**
@@ -129,5 +132,22 @@ class SongsController extends Controller
         $song = Song::find($song_id);
         $song->delete();
         return redirect()->back()->with('success', 'Se ha eliminado la canción.');
+    }
+
+    public function getSongs() {
+        if( Auth::check() ) {
+            $songs = Song::getAll();
+            return response()->json([
+                'code'=> 200,
+                'msg'=> 'Ok',
+                'data'=> $songs->toArray(),
+            ]);
+        } else {
+            return response()->json([
+                'code'=> 400,
+                'msg'=> 'Bad request',
+                'data'=> null
+            ]);
+        }
     }
 }

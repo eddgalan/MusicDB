@@ -41,3 +41,5 @@ Route::post('/songs', [SongsController::class, 'store'])->name('song_store');
 Route::post('/api/songs/{id}', [SongsController::class, 'show'])->name('song_show');
 Route::post('/songs/{id}', [SongsController::class, 'update'])->name('song_update');
 Route::delete('/songs/{id}', [SongsController::class, 'destroy'])->name('song_delete');
+Route::get('songs', [SongsController::class, 'index'])->name('songs');
+Route::get('/api/getsongs', [SongsController::class, 'getSongs'])->name('get_songs_datatable');

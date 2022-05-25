@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('album') }}"> Álbumes </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('songs') }}"> Canciones </a>
+                </li>
             </ul>
             @endauth
             <div class="d-flex">

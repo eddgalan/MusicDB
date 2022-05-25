@@ -1,3 +1,46 @@
+$(document).ready(function() {
+    $('.jquery-data-table').dataTable( {
+        ajax: "../../../api/getsongs",
+        columns: [
+            {
+                data: 'id',
+                class: 'text-center'
+            },
+            {
+                data: 'title',
+                class: 'text-center'
+            },
+            {
+                data: 'artist',
+                class: 'text-center'
+            },
+            {
+                data: 'album_name',
+                class: 'text-center'
+            },
+            {
+                data: 'id',
+                render: function(data, type) {
+                    return `
+                        <div class="text-center">
+                            <div class="btn-group btn-group-sm text-center">
+                                <button type="button" class="btn btn-primary" onclick="getArtistData(`+ data +`)"
+                                data-bs-toggle="modal" data-bs-target="#editArtist">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger" onclick="showMsgDelete(`+ data +`)"
+                                data-bs-toggle="modal" data-bs-target="#deleteArtist">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            },
+        ]
+    });
+});
+
 function showMsgDeleteSong(id, title) {
     $("p[name='msg-delete']").empty();
     let msg = "¿Está seguro que desea eliminar la canción '<strong>"+
