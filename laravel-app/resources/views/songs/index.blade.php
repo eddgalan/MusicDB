@@ -13,7 +13,8 @@
                         <h4 class="card-title"> Canciones </h4>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 text-end">
-                        <button class="btn btn-success waves-effect">
+                        <button class="btn btn-success waves-effect"
+                            data-bs-toggle="modal" data-bs-target="#addSong">
                             <i class="fas fa-plus"></i> Agregar Canción
                         </button>
                     </div>

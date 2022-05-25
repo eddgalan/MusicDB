@@ -85,7 +85,7 @@
                                                           <div class="text-end">
                                                               <div class="btn-group btn-group-sm text-center">
                                                                   <button type="button" class="btn btn-primary" onclick="showSong({{ $song_->id }})"
-                                                                    data-bs-toggle="modal" data-bs-target="#editSongPOST">
+                                                                    data-bs-toggle="modal" data-bs-target="#editSongAlbum">
                                                                       <i class="fas fa-edit"></i>
                                                                   </button>
                                                                   <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong('{{ $song_->id }}', '{{ $song_->title }}')"
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="col-md-12 text-end">
                                         <button type="button" class="btn btn-success" name="modal-add-song"
-                                            data-bs-toggle="modal" data-bs-target="#addSongPOST">
+                                            data-bs-toggle="modal" data-bs-target="#addSongAlbum">
                                             <i class="fas fa-plus"></i> Agregar canción
                                         </button>
                                     </div>

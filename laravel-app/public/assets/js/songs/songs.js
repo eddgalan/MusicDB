@@ -39,6 +39,24 @@ $(document).ready(function() {
             },
         ]
     });
+    $("select[name='artista']").change( function() {
+        let artistId = $(this).val();
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '../../../api/getAlbumsByArtist/'+ artistId,
+            success: function(resp) {
+                let albums = resp.data;
+                let select = $("select[name='album_id']");
+                select.empty();
+                let options = `<option value="0" selected disabled> Seleccione un álbum </option>`;
+                for( let album of albums ) {
+                    options += `<option value="`+ album.id +`">`+ album.title +`</option>`;
+                }
+                select.append(options);
+            }
+        });
+    });
 });
 
 function showMsgDeleteSong(id, title) {

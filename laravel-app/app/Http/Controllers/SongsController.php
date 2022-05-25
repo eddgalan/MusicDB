@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Song;
+use App\Models\Artist;
 
 class SongsController extends Controller
 {
@@ -16,7 +17,8 @@ class SongsController extends Controller
      */
     public function index() {
         if( Auth::check() ) {
-            return view('songs.index', ['title' => 'Álbumes']);
+            $artists = Artist::all();
+            return view('songs.index', ['title' => 'Canciones', 'artists'=> $artists]);
         } else {
             return redirect('/home');
         }
@@ -51,7 +53,7 @@ class SongsController extends Controller
         $song->path_stream1 = $request->pathstream1;
         $song->path_stream2 = $request->pathstream2;
         $song->save();
-        return redirect()->route('albums_show', $request->album_id)->with('success', 'Se agregó la nueva canción de forma correcta.');
+        return redirect()->back()->with('success', 'Se agregó la canción de forma correcta.');
     }
 
     /**

@@ -22,6 +22,16 @@ class Album extends Model
         return $album[0];
     }
 
+    public function getAlbumsByArtist($artistId) {
+        $albums = Album::select('albums.id', 'albums.title', 'albums.artist_id',
+            'artists.name', 'artists.lastname', 'artists.alias',
+            'albums.date','albums.genre', 'albums.description', 'albums.pathimg')
+            ->join('artists', 'albums.artist_id', '=', 'artists.id')
+            ->where('albums.artist_id', '=', $artistId)
+            ->get();
+        return $albums;
+    }
+
     public function getAll() {
         return Album::select('albums.id', 'albums.title', 'albums.artist_id',
             'artists.name', 'artists.lastname', 'artists.alias',

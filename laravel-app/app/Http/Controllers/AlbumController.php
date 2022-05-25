@@ -165,4 +165,21 @@ class AlbumController extends Controller
             ]);
         }
     }
+
+    public function getAlbumsByArtist($id){
+        if( Auth::check() ) {
+            $albums = Album::getAlbumsByArtist($id);
+            return response()->json([
+                'code'=> 200,
+                'msg'=> 'Ok',
+                'data'=> $albums->toArray(),
+            ]);
+        } else {
+            return response()->json([
+                'code'=> 400,
+                'msg'=> 'Bad request',
+                'data'=> null
+            ]);
+        }
+    }
 }
