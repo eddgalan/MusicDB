@@ -24,12 +24,12 @@ $(document).ready(function() {
                     return `
                         <div class="text-center">
                             <div class="btn-group btn-group-sm text-center">
-                                <button type="button" class="btn btn-primary" onclick="getArtistData(`+ data +`)"
-                                data-bs-toggle="modal" data-bs-target="#editArtist">
+                                <button type="button" class="btn btn-primary" onclick="showSong(`+ data +`)"
+                                data-bs-toggle="modal" data-bs-target="#editSongAlbum">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger" onclick="showMsgDelete(`+ data +`)"
-                                data-bs-toggle="modal" data-bs-target="#deleteArtist">
+                                <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong(`+ data +`)"
+                                data-bs-toggle="modal" data-bs-target="#showMsgDeleteSong">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -61,8 +61,13 @@ $(document).ready(function() {
 
 function showMsgDeleteSong(id, title) {
     $("p[name='msg-delete']").empty();
-    let msg = "¿Está seguro que desea eliminar la canción '<strong>"+
-        title + "</strong>'?";
+    let msg = "";
+    if( title ) {
+        msg = "¿Está seguro que desea eliminar la canción '<strong>"+
+            title + "</strong>'?";
+    } else {
+        msg = "¿Está seguro que desea eliminar la canción seleccionada?";
+    }
     $("p[name='msg-delete']").append(msg);
     $("button[name='btn-delete-song']").removeAttr('disabled');
     $("button[name='btn-cancel-delete-song']").removeAttr('disabled');

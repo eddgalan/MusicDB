@@ -223,37 +223,3 @@ function crear_inputs_new_song() {
     $(".new_song").val('');
     $("small[name='sm-song']").removeClass("display_none");
 }
-
-
-function getArtistData(id) {
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '../../../api/artists/'+ id,
-        success: function(resp) {
-            let artist = resp.data;
-            $("input[name='id'").val(artist.id);
-            $("input[name='name'").val(artist.name);
-            $("input[name='lastname'").val(artist.lastname);
-            $("input[name='alias'").val(artist.alias);
-            $("textarea[name='description'").val(artist.description);
-            $("input[name='web_site'").val(artist.web_site);
-            $("img[name='artist_img']").attr('src', artist.pathimg.replace('public', 'storage'));
-        }
-    });
-}
-
-function showMsgDelete(id){
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: '../../../api/artists/'+ id,
-        success: function(resp) {
-            let artist = resp.data;
-            let msg_del = "¿Seguro que desea eliminar el Artista <strong>"+ artist.name +"</strong>?. "+
-                "Todos los álbumes y canciones del artista también se eliminaran.";
-            $("input[name='id'").val(artist.id);
-            $("p[name='msg-delete'").html(msg_del);
-        }
-    });
-}
