@@ -12,7 +12,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <!-- Song Id -->
-                                <input type="hidden" name="id">
+                                <input type="hidden" name="song_id">
                                 <div class="col-md-12">
                                     <p name='msg-delete'> </p>
                                 </div>

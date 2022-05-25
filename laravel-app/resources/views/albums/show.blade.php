@@ -78,9 +78,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody name="tb-songs-body">
-                                                @foreach( $songs as $song )
+                                                @foreach( $songs as $song_ )
                                                     <tr>
-                                                      <td>{{ $song->title }}</td>
+                                                      <td>{{ $song_->title }}</td>
                                                       <td>
                                                           <div class="text-end">
                                                               <div class="btn-group btn-group-sm text-center">
@@ -88,7 +88,7 @@
                                                                     data-bs-toggle="modal" data-bs-target="#editSong">
                                                                       <i class="fas fa-edit"></i>
                                                                   </button>
-                                                                  <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong('{{ $song->id }}', '{{ $song->title }}')"
+                                                                  <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong('{{ $song_->id }}', '{{ $song_->title }}')"
                                                                     data-bs-toggle="modal" data-bs-target="#showMsgDeleteSong">
                                                                       <i class="fas fa-trash"></i>
                                                                   </button>
