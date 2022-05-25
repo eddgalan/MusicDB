@@ -38,4 +38,6 @@ Route::post('/albums/{id}', [AlbumController::class, 'update'])->name('albums_up
 Route::delete('/albums/{id}', [AlbumController::class, 'destroy'])->name('albums_delete');
 Route::get('/api/getalbums', [AlbumController::class, 'getAlbums'])->name('api_get_albums');
 Route::post('/songs', [SongsController::class, 'store'])->name('song_store');
+Route::post('/api/songs/{id}', [SongsController::class, 'show'])->name('song_show');
+Route::post('/songs/{id}', [SongsController::class, 'update'])->name('song_update');
 Route::delete('/songs/{id}', [SongsController::class, 'destroy'])->name('song_delete');

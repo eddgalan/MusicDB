@@ -84,8 +84,8 @@
                                                       <td>
                                                           <div class="text-end">
                                                               <div class="btn-group btn-group-sm text-center">
-                                                                  <button type="button" class="btn btn-primary" onclick="showSong(0)"
-                                                                    data-bs-toggle="modal" data-bs-target="#editSong">
+                                                                  <button type="button" class="btn btn-primary" onclick="showSong({{ $song_->id }})"
+                                                                    data-bs-toggle="modal" data-bs-target="#editSongPOST">
                                                                       <i class="fas fa-edit"></i>
                                                                   </button>
                                                                   <button type="button" class="btn btn-danger" onclick="showMsgDeleteSong('{{ $song_->id }}', '{{ $song_->title }}')"

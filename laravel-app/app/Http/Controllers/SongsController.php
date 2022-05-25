@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Song;
 
 class SongsController extends Controller
@@ -56,9 +57,29 @@ class SongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        if( Auth::check() ) {
+            $song = Song::get($id);
+            if( $song ) {
+                return response()->json([
+                    'code'=> 200,
+                    'msg'=> 'Ok',
+                    'data'=> $song
+                ]);
+            } else {
+                return response()->json([
+                    'code'=> 404,
+                    'msg'=> 'Resource not found',
+                    'data'=> null
+                ]);
+            }
+        } else {
+            return response()->json([
+                'code'=> 400,
+                'msg'=> 'Bad request',
+                'data'=> null
+            ]);
+        }
     }
 
     /**
@@ -79,9 +100,22 @@ class SongsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        if( Auth::check() ) {
+            $request->validate([
+                'title_song'=> 'required',
+            ]);
+            $song_id = $id ? $id : $request->song_id;
+            $song = Song::find($song_id);
+            $song->title = $request->title_song;
+            $song->path_video = $request->pathvideo;
+            $song->path_stream1 = $request->pathstream1;
+            $song->path_stream2 = $request->pathstream2;
+            $song->save();
+            return redirect()->back()->with('success', 'Se actualizaron los datos de la canción.');
+        } else {
+            return redirect('/home');
+        }
     }
 
     /**

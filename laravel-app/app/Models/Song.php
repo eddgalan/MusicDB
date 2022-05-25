@@ -23,6 +23,10 @@ class Song extends Model
         return $song;
     }
 
+    public function get($id) {
+        return Song::find($id);
+    }
+
     public function getByAlbum($albumId) {
         $songs = Song::select('songs.id', 'songs.title', 'songs.album_id', 'albums.title AS album_title',
             'songs.path_video', 'songs.path_stream1', 'songs.path_stream2')
